@@ -21,7 +21,7 @@ MaxCDN API for perl
 
 
 ## Installation
-`wget https://github.com/idabic/perl-maxcdn/archive/master.zip`
+`wget https://github.com/MaxCDN/perl-maxcdn.git`
 
 `unzip master.zip`
 
