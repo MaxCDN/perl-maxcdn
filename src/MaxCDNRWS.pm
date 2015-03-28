@@ -157,7 +157,7 @@ sub get {
         
         #DECODE JSON
         my $decoded_json = decode_json($res->content);
-        if($decoded_json->{records}){return $res;};
+        if($decoded_json->{records}){return $decoded_json->{records};};
         if($decoded_json->{code} == 200) {
 		if($debug){
                         print Dumper $decoded_json->{data};
