@@ -13,13 +13,22 @@ sub new {
                 _myalias                => shift,
                 _consumer_key           => shift,
                 _consumer_secret        => shift,
+                _debug                  => shift,
         };
         # Print all the values just for clarification.
         #print "My Alias is $self->{_myalias}\n";
         #print "My Consumer Key is $self->{_consumer_key}\n";
         #print "My Consumer Secret is $self->{_consumer_secret}\n";
+        #print "Debug flag is $self->{_debug}\n";
         bless $self, $class;
         return $self;
+}
+
+#Set the Debug flag on/off
+sub setDebug {
+        my ( $self, $debug ) = @_;
+        $self->{_debug} = $debug if defined($debug);
+        return $self->{_debug};
 }
 
 # Set the Alias
@@ -41,6 +50,12 @@ sub setSecret {
         my ( $self, $secret ) = @_;
         $self->{_myalias} = $secret if defined($secret);
         return $self->{_consumer_secret};
+}
+
+# Get the Debbug
+sub getDebug {
+        my( $self ) = @_;
+        return $self->{_debug};
 }
 
 # Get the Alias
