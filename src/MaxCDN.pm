@@ -24,7 +24,7 @@ sub new {
         return $self;
 }
 
-#Set the Debug flag on/off
+#Set the Debug flag
 sub setDebug {
         my ( $self, $debug ) = @_;
         $self->{_debug} = $debug if defined($debug);
