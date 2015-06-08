@@ -14,7 +14,7 @@ my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ACCOUNT INFO
 #my @params = ('name=IDABIC');
-#$api->put("/account.json", @params, 1);
+#$api->put("/account.json", @params);
 
 #GET ACCOUNT ADDRESS
 #my $data = $api->get("/account.json/address");
@@ -22,7 +22,7 @@ my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ACCOUNT ADDRESS
 #my @params = ('street1=Fake');
-#$api->put("/account.json/address", @params, 1);
+#$api->put("/account.json/address", @params);
 #*******************************
 
 
@@ -70,7 +70,7 @@ my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ZONE DETAILS
 #my @params = ('compress=0');
-#$api->put("/zones/pull.json/97167", @params, 1);
+#$api->put("/zones/pull.json/97167", @params);
 
 #CREATE ZONE
 #my @params = {name => 'perltest5', url => 'http://www.google.com'};
