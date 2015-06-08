@@ -39,6 +39,29 @@ use Data::Dumper;
            
 $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 
+#ENABLE DEBUG FUNCTIONALITY BY ADDING "1" AT THE END OF AUTH:
+#my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET', 1);
+#EXAMPLE OF DEBUG OUTPUT:
+
+#Checking if shortcut was used...
+#Shortcut is used! Applying URL composition method...
+#Address composed: /zones/pull.json/123456/cache
+#Forming purge array...
+#Making a DELETE request to https://rws.maxcdn.com/ALIAS/zones/pull.json/123456/cache
+#Creating request...
+#consumer_key => ---------------------------------,
+#                consumer_secret => +++++++++++++++++++++++++++++++++++,
+#                request_url => https://rws.maxcdn.com/ALIAS/zones/pull.json/123456/cache,
+#                request_method => 'DELETE',
+#                signature_method => 'HMAC-SHA1',
+#                timestamp => time,
+#                nonce => '',
+#                callback => '',
+#Signing request Net::OAuth::V1_0A::RequestTokenRequest=HASH(0x20d3d98)
+#Sending request to MaxCDN API server...
+#Successfully executed API call.
+#$VAR1 = undef;
+
 #*******************************
 #ACCOUNT
 #GET ACCOUNT INFO
@@ -47,7 +70,7 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ACCOUNT INFO
 #my @params = ('name=IDABIC');
-#$api->put("/account.json", @params, 1);
+#$api->put("/account.json", @params);
 
 #GET ACCOUNT ADDRESS
 #my $data = $api->get("/account.json/address");
@@ -55,7 +78,7 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ACCOUNT ADDRESS
 #my @params = ('street1=Fake');
-#$api->put("/account.json/address", @params, 1);
+#$api->put("/account.json/address", @params);
 #*******************************
 
 
@@ -65,24 +88,24 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 #USERS
 #GET USERS
 #my $data = $api->get("/users.json");
-#print $data->{'users'}[8]{'id'};
+#print $data->{'users'}[0]{'id'};
 
 #CREATE USER
-#my @params = {firstname => 'Perl', lastname => 'User', email => 'idabic@test-domain.com', password => 'testpwd'};
+#my @params = {firstname => 'Perl', lastname => 'User', email => 'user@domain.com', password => 'testpwd'};
 #$api->post("/users.json", @params);
 
 #GET USER
-#my $id = 58309;
-#my $data = $api->get("/users.json/58309");
+#my $id = 33706;
+#my $data = $api->get("/users.json/" . $id);
 #print $data->{'user'}{'lastname'};
 
 #UPDATE USER
-#my $id = 58309;
+#my $id = 33706;
 #my @params = ('lastname=Test');
 #$api->put("/users.json/" . $id, @params);
 
 #DELETE USER
-#my $id = 58309;
+#my $id = 33706;
 #$api->delete("/users.json/" . $id);
 
 #*******************************
@@ -103,16 +126,15 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 
 #UPDATE ZONE DETAILS
 #my @params = ('compress=0');
-#$api->put("/zones/pull.json/236828", @params, 1);
+#$api->put("/zones/pull.json/97167", @params);
 
 #CREATE ZONE
 #my @params = {name => 'perltest5', url => 'http://www.google.com'};
 #$api->post("/zones/pull.json", @params);
 
-#$api->post("/zones/pull/170787/flex.json");
 
 #DELETE
-#$api->delete("/zones/pull.json/186148");
+#$api->delete("/zones/pull.json/97167");
 #*******************************
 
 
@@ -131,24 +153,24 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 #$api->get("/zones/pull.json/count");
 
 #Get Pull Zone
-#my $id = 96076;
+#my $id = 97167;
 #$api->get("/zones/pull.json/" . $id);
 
 #Update Pull Zone
-#my $id = 236828;
+#my $id = 97167;
 #my @params = ('compress=0');
 #$api->put("/zones/pull.json/" . $id, @params);
 
 #Delete Pull Zone
-#my $id = 236828;
+#my $id = 97167;
 #$api->delete("/zones/pull.json/" . $id);
 
 #Enable Pull Zone
-#my $id = 134458;
+#my $id = 97167;
 #$api->put("/zones/pull/" . $id . "/enable.json");
 
 #Disable Pull Zone
-#my $id = 134458;
+#my $id = 97167;
 #$api->put("/zones/pull/" . $id . "/disable.json");
 
 #Purge Cache
@@ -158,40 +180,40 @@ $api = new MaxCDNRWS( 'ALIAS', 'KEY', 'SECRET');
 #PURGE SINGLE
 #my @params = ("%2Frankings%2Fhotlist%2Fi%2F500w%2F2.jpg");
 
-#$api->delete("/zones/pull.json/165013/cache", @params)
+#$api->delete("/zones/pull.json/97167/cache", @params)
 
 #PURGE ALL
 
-#$api->delete("/zones/pull.json/165013/cache")
+#$api->delete("/zones/pull.json/97167/cache")
 #*******************************
 
 
 
 #*******************************
 #Pull Zone Custom Domains API
-#my $id = 134458;
+#my $id = 97167;
 #my $data = $api->get("/zones/pull/" . $id . "/customdomains.json");
 #print $data->{'customdomains'}[2]{'custom_domain'};
 
 #Create Custom Domain
-#my $id = 134458;
+#my $id = 97167;
 #my @params = {custom_domain => 'idabic.dom.net'};
 #$api->post("/zones/pull/" . $id . "/customdomains.json", @params);
 
 #Get Custom Domain
-#my $zid = 134458;
+#my $zid = 97167;
 #my $cid = 113070;
 #my $data = $api->get("/zones/pull/" . $zid . "/customdomains.json/" . $cid);
 #print $data->{'customdomain'}{'custom_domain'};
 
 #Update Custom Domain
-#my $zid = 134458;
+#my $zid = 97167;
 #my $cid = 173075;
 #my @params = ('custom_domain=idabic.domain.net');
 #$api->put("/zones/pull/" . $zid . "/customdomains.json/" . $cid, @params);
 
 #Delete Custom Domain
-#my $zid = 134458;
+#my $zid = 97167;
 #my $cid = 173075;
 #$api->delete("/zones/pull/" . $zid . "/customdomains.json/" . $cid);
 #*******************************
