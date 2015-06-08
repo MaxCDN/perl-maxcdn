@@ -6,6 +6,29 @@ use Data::Dumper;
 
 my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET');
 
+#ENABLE DEBUG FUNCTIONALITY BY ADDING "1" AT THE END OF AUTH:
+#my $api = new MaxCDNRWS('ALIAS', 'KEY', 'SECRET', 1);
+#EXAMPLE OF DEBUG OUTPUT:
+
+#Checking if shortcut was used...
+#Shortcut is used! Applying URL composition method...
+#Address composed: /zones/pull.json/123456/cache
+#Forming purge array...
+#Making a DELETE request to https://rws.maxcdn.com/ALIAS/zones/pull.json/123456/cache
+#Creating request...
+#consumer_key => ---------------------------------,
+#                consumer_secret => +++++++++++++++++++++++++++++++++++,
+#                request_url => https://rws.maxcdn.com/ALIAS/zones/pull.json/123456/cache,
+#                request_method => 'DELETE',
+#                signature_method => 'HMAC-SHA1',
+#                timestamp => time,
+#                nonce => '',
+#                callback => '',
+#Signing request Net::OAuth::V1_0A::RequestTokenRequest=HASH(0x20d3d98)
+#Sending request to MaxCDN API server...
+#Successfully executed API call.
+#$VAR1 = undef;
+
 #*******************************
 #ACCOUNT
 #GET ACCOUNT INFO
